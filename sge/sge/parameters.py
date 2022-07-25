@@ -9,6 +9,8 @@ params = {'PARAMETERS': None,
           'SEED': None,
           'PROB_CROSSOVER': 0.9,
           'PROB_MUTATION': 0.1,
+          'MUTATION_STRATEGY': "Regular",
+          'SELECTION_STRATEGY': "Tournamnet",
           'TSIZE': 3,
           'GRAMMAR': 'grammars/regression.txt',
           'EXPERIMENT_NAME': "dumps/Test",
@@ -64,6 +66,14 @@ def set_parameters(arguments):
                         dest='PROB_MUTATION',
                         type=float,
                         help='Specifies the probability of mutation usage. Float required')
+    parser.add_argument('--mutation_strategy',
+                        dest='MUTATION_STRATEGY',
+                        type=str,
+                        help='Specifies the mutation strategy used. String required')
+    parser.add_argument('--selection_strategy',
+                        dest='SELECTION_STRATEGY',
+                        type=str,
+                        help='Specifies the selection strategy used. String required')
     parser.add_argument('--tsize',
                         dest='TSIZE',
                         type=int,
@@ -113,4 +123,3 @@ def set_parameters(arguments):
     if 'PARAMETERS' in cmd_args:
         load_parameters(cmd_args['PARAMETERS'])
     params.update(cmd_args)
-

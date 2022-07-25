@@ -1,12 +1,12 @@
 #!/bin/bash
 
 
-nor=50		# number of runs
+nor=20		# number of runs
 
 
 # Uncomment/modify appropriate lines in the code below as per your requirement
 for (( run=1 ; run<nor+1 ; run=${run}+1 )) do
-	nohup python3 -m progsys.progsys --seed 791021 --run $run --parameters parameters/standard.yml &
+	nohup python3 -m progsys.progsys --run $run --parameters parameters/standard.yml &
 
 
 done

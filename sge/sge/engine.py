@@ -4,8 +4,8 @@ import sge.grammar as grammar
 import sge.logger as logger
 from datetime import datetime
 from sge.operators.recombination import crossover
-from sge.operators.mutation import mutate
-from sge.operators.selection import tournament
+from sge.operators.mutation import mutate, mutateAlt, shrinkmutate
+from sge.operators.selection import tournament, doubletournamentsmall, doubletournamentlarge, samesizeind, roulette_wheel_selection
 from sge.parameters import (
     params,
     set_parameters
@@ -60,13 +60,39 @@ def evolutionary_algorithm(evaluation_function=None):
         new_population = population[:params['ELITISM']]
         while len(new_population) < params['POPSIZE']:
             if random.random() < params['PROB_CROSSOVER']:
-                p1 = tournament(population, params['TSIZE'])
-                p2 = tournament(population, params['TSIZE'])
-                ni = crossover(p1, p2)
+                if params['SELECTION_STRATEGY'] == "RouletteWheel":
+                    p1 = roulette_wheel_selection(population)
+                    p2 = roulette_wheel_selection(population)
+                    ni = crossover(p1, p2)
+                elif params['SELECTION_STRATEGY'] == "SameSizeTournamnet":
+                    p1 = tournament(population, params['TSIZE'])
+                    p2 = samesizeind(population, p1)
+                    ni = crossover(p1, p2)
+                elif params['SELECTION_STRATEGY'] == "DoubleTournamnet":
+                    if random.random() < params['PROB_CROSSOVER']/2:
+                        p1 = doubletournamentsmall(population, params['TSIZE'])
+                        p2 = doubletournamentsmall(population, params['TSIZE'])
+                        ni = crossover(p1, p2)
+                    else:
+                        p1 = doubletournamentlarge(population, params['TSIZE'])
+                        p2 = doubletournamentlarge(population, params['TSIZE'])
+                        ni = crossover(p1, p2)
+                else:
+                    p1 = tournament(population, params['TSIZE'])
+                    p2 = tournament(population, params['TSIZE'])
+                    ni = crossover(p1, p2)
+
             else:
-                ni = tournament(population, params['TSIZE'])
-            ni = mutate(ni, params['PROB_MUTATION'])
+                if params['MUTATION_STRATEGY'] == "Shrink":
+                    ni = tournament(population, params['TSIZE'])
+                    ni = shrinkmutate(ni, params['PROB_MUTATION'], it, params['GENERATIONS'])
+                elif params['MUTATION_STRATEGY'] == "Alt":
+                    ni = tournament(population, params['TSIZE'])
+                    ni = mutateAlt(ni, params['PROB_MUTATION'])
+                else:
+                    ni = tournament(population, params['TSIZE'])
+                    ni = mutate(ni, params['PROB_MUTATION'])
+
             new_population.append(ni)
         population = new_population
         it += 1
-
