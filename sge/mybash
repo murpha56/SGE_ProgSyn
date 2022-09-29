@@ -1,0 +1,5 @@
+#!/bin/bash
+
+COST=$(cat STDOUT | tail -1 | cut -f2)
+
+echo "$COST"

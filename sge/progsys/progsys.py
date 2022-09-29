@@ -25,19 +25,20 @@ class ProgSys():
     def __init__(self, dataset_train, dataset_test, grammar):
         # Initialise base fitness function class.
         super().__init__()
-        
+
         self.training, self.test, self.embed_header, self.embed_footer = \
             self.get_data(dataset_train, dataset_test,
                           grammar)
         self.eval = self.create_eval_process()
 
-    def evaluate(self, ind, **kwargs):
-    
-        dist = kwargs.get('dist', 'training')
-        
+    def evaluate(self, ind, dataset):
+
+        #dist = kwargs.get('dist', 'training')
+
         program = self.format_program(ind,
                                       self.embed_header, self.embed_footer)
-        data = self.training if dist == "training" else self.test
+        #calculate training or test
+        data = self.training if dataset == "training" else self.test
         program = "{}\n{}\n".format(data, program)
         eval_json = json.dumps({'script': program, 'timeout': 1.0,
                                 'variables': ['cases', 'caseQuality',
@@ -138,7 +139,7 @@ class ProgSys():
         train_set = train
         test_set = test
 
-        embed_file = path.join("grammars", "progsys", (grammar[-10:-4] + "-Embed.txt"))
+        embed_file = path.join("grammars", "MIT_progsys", "progsys", "Median" + "-Embed.txt")
         with open(embed_file, 'r') as embed:
             embed_code = embed.read()
         insert = embed_code.index(self.INSERTCODE)
@@ -156,6 +157,6 @@ if __name__ == '__main__':
     import sge
     dataset_train = "resources/progsys/Median/Train.txt"
     dataset_test = "resources/progsys/Median/Test.txt"
-    grammar = "grammars/progsys/Median.bnf"
+    grammar = "grammars/MIT_progsys/progsys/Median.bnf"
     eval_func = ProgSys(dataset_train=dataset_train, dataset_test=dataset_test, grammar=grammar)
     sge.evolutionary_algorithm(evaluation_function=eval_func)

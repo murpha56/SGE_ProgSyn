@@ -10,6 +10,8 @@ params = {'PARAMETERS': None,
           'PROB_CROSSOVER': 0.9,
           'PROB_MUTATION': 0.1,
           'MUTATION_STRATEGY': "Regular",
+          'CROSSOVER_STRATEGY': "Regular",
+          'PROB_CONTEXT': 0.2,
           'SELECTION_STRATEGY': "Tournamnet",
           'TSIZE': 3,
           'GRAMMAR': 'grammars/regression.txt',
@@ -70,6 +72,14 @@ def set_parameters(arguments):
                         dest='MUTATION_STRATEGY',
                         type=str,
                         help='Specifies the mutation strategy used. String required')
+    parser.add_argument('--crossover_strategy',
+                        dest='CROSSOVER_STRATEGY',
+                        type=str,
+                        help='Specifies the crossover strategy used. String required')
+    parser.add_argument('--prob_context',
+                        dest='PROB_CONTEXT',
+                        type=float,
+                        help='Specifies the context aware crossover probabilty. Float required')
     parser.add_argument('--selection_strategy',
                         dest='SELECTION_STRATEGY',
                         type=str,

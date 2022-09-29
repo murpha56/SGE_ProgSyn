@@ -27,9 +27,14 @@ def doubletournamentlarge(population, tsize=6):
     pool.sort(key=lambda i: i['fitness'])
     return copy.deepcopy(pool[0])
 
-def samesizeind(population, ind):
-    pool = random.sample(population, 1)
+def samesizeind(population, tsize, ind):
+    pool = random.sample(population, tsize)
+    pool.sort(key=lambda i: i['fitness'])
     if abs(pool[0]['tree_depth'] - ind['tree_depth']) < 3:
         return copy.deepcopy(pool[0])
+    elif abs(pool[1]['tree_depth'] - ind['tree_depth']) < 3:
+        return copy.deepcopy(pool[1])
+    elif abs(pool[2]['tree_depth'] - ind['tree_depth']) < 3:
+            return copy.deepcopy(pool[2])
     else:
-        return samesizeind(population, ind)
+        return copy.deepcopy(pool[0])
