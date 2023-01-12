@@ -1,7 +1,8 @@
+import math
 # *****************************************************************************
 # Helper Code
 # *****************************************************************************
-import math
+
 
 def div(nom, denom):
   if denom <= 0.00001:
@@ -88,11 +89,22 @@ def saveRange(start, end):
 # *****************************************************************************
 
 #  evolved function
-def evolve(in0):
+#def evolve(in0):
   # stop.value is a boolean flag which should be used to check if the EA wants the program to stop.value
-  loopBreakConst = 2 * len(in0)
-  loopBreak = 0
-  <insertCodeHere>
+#  loopBreakConst = 2 * len(in0)
+#  loopBreak = 0
+#  <insertCodeHere>
+#  res0 = getIndexIntList(li0, len(in0))
+#  return res0
+
+def evolve(in0):
+  b0 = bool(); b1 = bool(); b2 = bool()
+  i0 = int(); i1 = int(); i2 = int()
+  li0 = []; li1 = []; li2 = []
+  res0 = int()
+#  for res0 in in0:
+#    li0.insert(( res0 * res0 ),len(li0))
+  res0 = getIndexIntList(li0, len(in0))
   return res0
 
 

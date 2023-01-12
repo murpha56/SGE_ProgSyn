@@ -1,0 +1,18 @@
+POPSIZE: 1000
+GENERATIONS: 500
+ELITISM: 1 # number of individuals that survive
+PROB_CROSSOVER: 0.9
+PROB_MUTATION: 0.09
+MUTATION_STRATEGY: 'Regular' # what strategy to use; Shrink, Alt, Regular
+CROSSOVER_STRATEGY: 'ContextAware' # what strategy to use; SinglePoint, ContextAware, Regular
+PROB_CONTEXT: 0.15
+SELECTION_STRATEGY: 'Tournament' # what strategy to use; RouletteWheel, SameSizeTournamnet, DoubleTournamnet or Tournament
+TSIZE: 7
+GRAMMAR: 'grammars/MIT_progsys/progsys/Small Or Large.bnf'
+EXPERIMENT_NAME: 'dumps/SmallOrLarge_v2/'
+RUN: 1
+INCLUDE_GENOTYPE: False
+SAVE_STEP: 30
+VERBOSE: True
+MIN_TREE_DEPTH: 7
+MAX_TREE_DEPTH: 20

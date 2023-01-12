@@ -1,4 +1,3 @@
-#core
 <start> ::= <expr>
 <expr> ::= <expr><op><expr>|(<expr><op><expr>)|<pre_op>(<expr>)|<var>
 <op> ::= +|-|*|\eb_div_\eb

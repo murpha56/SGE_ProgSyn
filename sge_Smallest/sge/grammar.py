@@ -1,7 +1,7 @@
 import re
 import random
 from sge.utilities import ordered_set
-
+#from utilities import ordered_set
 
 class Grammar:
     """Class that represents a grammar. It works with the prefix notation."""
@@ -237,8 +237,7 @@ get_non_recursive_options = _inst.get_non_recursive_options
 
 if __name__ == "__main__":
     random.seed(42)
-    g = Grammar("grammars/regression.txt", 9)
+    g = Grammar("grammars/regression.txt")
     genome = [[0], [0, 3, 3], [0], [], [1, 1]]
     mapping_numbers = [0] * len(genome)
     print(g.mapping(genome, mapping_numbers, needs_python_filter=True))
-

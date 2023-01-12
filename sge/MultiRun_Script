@@ -1,73 +1,49 @@
 #!/bin/bash
 
 
-nor=630		# number of runs
+nor=100		# number of runs
 
 
 # Uncomment/modify appropriate lines in the code below as per your requirement
 for (( run=1 ; run<nor+1 ; run=${run}+1 )) do
-	if (($run < 31))
+	if (($run < 51))
 	then
-		nohup python3 -m progsys.progsys --run $run --elitism 2 --prob_mutation 0.10 --mutation_strategy 'Shrink' --prob_context 0.2 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
-	elif (($run < 61))
+		nohup python3 -m progsys.LastIndexofZero --run $run --parameters parameters/LastIndexofZero.yml  &
+	elif (($run < 101))
 	then
-		nohup python3 -m progsys.progsys --run $run --elitism 4 --prob_mutation 0.05 --prob_context 0.2 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
-	elif (($run < 91))
-	then
-		nohup python3 -m progsys.progsys --run $run --elitism 4 --prob_mutation 0.10 --mutation_strategy 'Shrink' --prob_context 0.2 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
-	elif (($run < 121))
-	then
-		nohup python3 -m progsys.progsys --run $run --elitism 4 --prob_mutation 0.15 --mutation_strategy 'Shrink' --prob_context 0.2 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
+		nohup python3 -m progsys.NegativeToZero --run $run --parameters parameters/NegativeToZero.yml  &
 	elif (($run < 151))
 	then
-		nohup python3 -m progsys.progsys --run $run --elitism 5 --prob_mutation 0.10 --prob_context 0.2 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
-	elif (($run < 181))
+		nohup python3 -m progsys.MirrorImage --run $run --parameters parameters/MirrorImage.yml  &
+	elif (($run < 401))
 	then
-		nohup python3 -m progsys.progsys --run $run --elitism 5 --prob_mutation 0.10 --mutation_strategy 'Shrink' --prob_context 0.2 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
-	elif (($run < 211))
+		nohup python3 -m progsys.DoubleLetters --run $run --parameters parameters/DoubleLetters.yml  &
+	elif (($run < 501))
 	then
-		nohup python3 -m progsys.progsys --run $run --elitism 5 --prob_mutation 0.15 --mutation_strategy 'Shrink' --prob_context 0.2 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
-	elif (($run < 241))
-	then
-		nohup python3 -m progsys.progsys --run $run --elitism 1 --prob_mutation 0.1 --mutation_strategy 'Shrink' --prob_context 0.1 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
-	elif (($run < 271))
-	then
-		nohup python3 -m progsys.progsys --run $run --elitism 1 --prob_mutation 0.05 --mutation_strategy 'Shrink' --prob_context 0.1 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
-	elif (($run < 301))
-	then
-		nohup python3 -m progsys.progsys --run $run --elitism 2 --prob_mutation 0.05 --prob_context 0.1 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
-	elif (($run < 331))
-	then
-		nohup python3 -m progsys.progsys --run $run --elitism 3 --prob_mutation 0.10 --mutation_strategy 'Shrink' --prob_context 0.1 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
-	elif (($run < 361))
-	then
-		nohup python3 -m progsys.progsys --run $run --elitism 3 --prob_mutation 0.05 --mutation_strategy 'Shrink' --prob_context 0.1 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
-	elif (($run < 391))
-	then
-		nohup python3 -m progsys.progsys --run $run --elitism 4 --prob_mutation 0.05 --prob_context 0.1 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
-	elif (($run < 421))
-	then
-		nohup python3 -m progsys.progsys --run $run --elitism 1 --prob_mutation 0.05 --mutation_strategy 'Shrink' --prob_context 0.05 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
-	elif (($run < 451))
-	then
-		nohup python3 -m progsys.progsys --run $run --elitism 3 --prob_mutation 0.1 --prob_context 0.05 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
-	elif (($run < 481))
-	then
-		nohup python3 -m progsys.progsys --run $run --elitism 3 --prob_mutation 0.10 --mutation_strategy 'Shrink' --prob_context 0.05 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
-	elif (($run < 511))
-	then
-		nohup python3 -m progsys.progsys --run $run --elitism 3 --prob_mutation 0.15 --mutation_strategy 'Shrink' --prob_context 0.05 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
-	elif (($run < 541))
-	then
-		nohup python3 -m progsys.progsys --run $run --elitism 3 --prob_mutation 0.05 --mutation_strategy 'Shrink' --prob_context 0.05 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
-	elif (($run < 571))
-	then
-		nohup python3 -m progsys.progsys --run $run --elitism 4 --prob_mutation 0.10 --mutation_strategy 'Shrink' --prob_context 0.05 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
+		nohup python3 -m progsys.EvenSquares --run $run --parameters parameters/EvenSquares.yml  &
 	elif (($run < 601))
 	then
-		nohup python3 -m progsys.progsys --run $run --elitism 4 --prob_mutation 0.05 --mutation_strategy 'Shrink' --prob_context 0.05 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
+		nohup python3 -m progsys.ForLoopIndex --run $run --parameters parameters/ForLoopIndex.yml  &
+	elif (($run < 701))
+	then
+		nohup python3 -m progsys.Grade --run $run --parameters parameters/Grade.yml  &
+	elif (($run < 801))
+	then
+		nohup python3 -m progsys.LastIndexofZero --run $run --parameters parameters/LastIndexofZero.yml  &
+	elif (($run < 901))
+	then
+		nohup python3 -m progsys.MirrorImage --run $run --parameters parameters/MirrorImage.yml  &
+	elif (($run < 1001))
+	then
+		nohup python3 -m progsys.NegativeToZero --run $run --parameters parameters/NegativeToZero.yml  &
+	elif (($run < 1101))
+	then
+		nohup python3 -m progsys.NumberIO --run $run --parameters parameters/NumberIO.yml  &
+	elif (($run < 1201))
+	then
+		nohup python3 -m progsys.PigLatin --run $run --parameters parameters/PigLatin.yml  &
 	else
-		nohup python3 -m progsys.progsys --run $run --elitism 5 --prob_mutation 0.05 --prob_context 0.05 --experiment_name 'dumps/MedianMoreRuns/' --parameters parameters/standard.yml  &
+		nohup python3 -m progsys.SmallOrLarge --run $run --parameters parameters/SmallOrLarge.yml  &
 
 	fi
 
